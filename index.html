@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .unsupported-browser {
+            display: none;
+            text-align: center;
+            margin-top: 50px;
+            font-size: 20px;
+            color: red;
+        }
+    </style>
+    <script>
+        function isChromiumBased() {
+            var userAgent = navigator.userAgent;
+            return userAgent.indexOf('Chrome') !== -1 || userAgent.indexOf('Chromium') !== -1 || userAgent.indexOf('Edg') !== -1;
+        }
+
+        function isIE() {
+            var userAgent = navigator.userAgent;
+            return userAgent.indexOf('MSIE') !== -1 || userAgent.indexOf('Trident/') !== -1;
+        }
+
+        window.onload = function() {
+            if (!isChromiumBased()) {
+                if (isIE()) {
+                    alert("Esta aplicación no es compatible con Internet Explorer. Por favor, use un navegador basado en Chromium (como Google Chrome o Microsoft Edge).");
+                }
+                document.getElementById('unsupported-browser').style.display = 'block';
+                document.getElementById('login-form').style.display = 'none';
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div id="login-form">
+            <h2>Inicio de Sesión</h2>
+            <form>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Contraseña:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Ingrese su contraseña">
+                </div>
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            </form>
+        </div>
+        <div id="unsupported-browser" class="unsupported-browser">
+            Esta aplicación solo es compatible con navegadores basados en Chromium (como Google Chrome o Microsoft Edge).
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
